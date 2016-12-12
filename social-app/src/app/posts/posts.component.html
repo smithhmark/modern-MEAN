@@ -1,6 +1,18 @@
 <div class='container'>
     <h1>Recent Posts</h1>
-    <button (click)="addPost()" class='btn btn-default'>Add Post</button>
+    <form role='form'>
+        <div class='form-group'>
+            <div class='input-group'>
+                <input type="text" [(ngModel)]="newBody" 
+                  placeholder="new post's text" 
+                  class='form-control' 
+                  name="postBody"/>
+                <span class='input-group-btn'>
+                    <button (click)="addPost()" class='btn btn-default'>Add Post</button>
+                </span>
+            </div>
+        </div>
+    </form>
     <ul class='list-group'>
         <li class='list-group-item' *ngFor="let post of posts">
             <strong>{{post.username}}</strong>

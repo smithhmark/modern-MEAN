@@ -9,7 +9,7 @@ import {Post} from '../post';
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
-
+  newBody: string;
   posts: Post[];
 
   constructor(private postService: PostService) { }
@@ -19,7 +19,10 @@ export class PostsComponent implements OnInit {
   }
 
   addPost(): void{
-    this.posts.unshift({username: 'current_user', body: 'a canned post body'});
+    if (this.newBody) {
+      this.posts.unshift({username: 'current_user', body: this.newBody});
+    }
+    this.newBody = null; // manually clearing the input field
   }
 
 }
