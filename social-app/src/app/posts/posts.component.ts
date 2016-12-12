@@ -18,4 +18,8 @@ export class PostsComponent implements OnInit {
       this.posts = this.postService.getPosts();
   }
 
+  addPost(): void{
+    this.posts.unshift({username: 'current_user', body: 'a canned post body'});
+  }
+
 }
