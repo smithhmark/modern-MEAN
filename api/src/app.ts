@@ -30,9 +30,10 @@ class App {
      * API endpoints */
     let router = express.Router();
     // placeholder route handler
-    router.get('/', (req, res, next) => {
+    router.get('/api/posts', (req, res, next) => {
       res.json({
-        message: 'Hello World!'
+        username: 'Hello World!',
+	body: 'node rocks!'
       });
     });
     this.express.use('/', router);
