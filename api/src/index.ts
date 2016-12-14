@@ -1,5 +1,3 @@
-console.log('Hello, typescript');
-
 import * as http from 'http';
 import * as debug from 'debug';
 
