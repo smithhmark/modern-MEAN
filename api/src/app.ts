@@ -36,6 +36,14 @@ class App {
 	body: 'node rocks!'
       });
     });
+
+    router.post('/api/posts', (req, res, next) => {
+	    console.log('post received!');
+	    console.log('uname', req.body.username);
+	    console.log('body', req.body.body);
+	    res.status(201);
+    });
+
     this.express.use('/', router);
   }
 
