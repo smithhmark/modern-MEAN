@@ -33,15 +33,15 @@ class App {
     router.get('/api/posts', (req, res, next) => {
       res.json({
         username: 'Hello World!',
-	body: 'node rocks!'
+        body: 'node rocks!'
       });
     });
 
     router.post('/api/posts', (req, res, next) => {
-	    console.log('post received!');
-	    console.log('uname', req.body.username);
-	    console.log('body', req.body.body);
-	    res.status(201);
+      console.log('post received!');
+      console.log('uname', req.body.username);
+      console.log('body', req.body.body);
+      res.status(201);
     });
 
     this.express.use('/', router);
