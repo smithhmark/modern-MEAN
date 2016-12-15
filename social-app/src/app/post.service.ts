@@ -8,7 +8,18 @@ export class PostService {
 
   constructor() { }
 
-  getPosts(): Post[] {
-    return POSTS;
+  getPosts(): Promise<Post[]> { 
+    return this.getPostsInstantly();
+    //return this.getPostsSlowly();
+  }
+
+  getPostsInstantly(): Promise<Post[]> {
+    return Promise.resolve(POSTS);
+  }
+
+  getPostsSlowly(): Promise<Post[]> {
+    return new Promise<Post[]>(resolve =>
+                               setTimeout(resolve, 2000)) // delay 2 seconds
+                               .then(() => this.getPostsInstantly());
   }
 }
