@@ -3,6 +3,8 @@ import * as express from 'express';
 //import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 
+import { Post } from './schemas/post';
+
 // Creates and configures an ExpressJS web server.
 class App {
 
@@ -31,9 +33,9 @@ class App {
     let router = express.Router();
     // placeholder route handler
     router.get('/api/posts', (req, res, next) => {
-      res.json({
-        username: 'Hello World!',
-        body: 'node rocks!'
+      Post.find((err, posts) => {
+        if (err) { return next(err); }
+        res.json(posts);
       });
     });
 
@@ -41,12 +43,18 @@ class App {
       console.log('post received!');
       console.log('uname', req.body.username);
       console.log('body', req.body.body);
-      res.status(201);
+      var post = new Post({
+        username: req.body.username,
+        body: req.body.body
+      });
+      post.save(function (err, post) {
+        if (err) {return next(err);}
+        res.status(201).json(post);
+      });
     });
 
     this.express.use('/', router);
   }
-
 }
 
 export default new App().express;
