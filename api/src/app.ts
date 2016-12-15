@@ -10,10 +10,11 @@ class App {
 
   // ref to Express instance
   public express: express.Application;
-
+  private _basePath: string;
   //Run configuration methods on the Express instance.
   constructor() {
     this.express = express();
+    this._basePath = path.resolve(__dirname, '../../social-app/dist/');
     this.middleware();
     this.routes();
   }
@@ -21,17 +22,21 @@ class App {
   // Configure Express middleware.
   private middleware(): void {
     //this.express.use(logger('dev'));
+    this.express.use(express.static(this._basePath));
     this.express.use(bodyParser.json());
     this.express.use(bodyParser.urlencoded({ extended: false }));
   }
 
   // Configure API endpoints.
   private routes(): void {
-    /* This is just to get up and running, and to make sure what we've got is
-     * working so far. This function will change when we start to add more
-     * API endpoints */
     let router = express.Router();
-    // placeholder route handler
+    /*
+    router.get('/', (req, res, next) => {
+      var indexpath = path.join(this._basePath, '/index.html');
+      res.sendFile(indexpath);
+    });
+    */
+
     router.get('/api/posts', (req, res, next) => {
       Post.find((err, posts) => {
         if (err) { return next(err); }
