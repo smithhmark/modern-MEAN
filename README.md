@@ -17,5 +17,6 @@ Sources of inspiration/answers:
  * overall api approach: http://mherman.org/blog/2016/11/05/developing-a-restful-api-with-node-and-typescript/
  * typescript and mongoose: http://brianflove.com/2016/10/04/typescript-declaring-mongoose-schema-model/
  * typescript and mongoose: https://github.com/vladotesanovic/typescript-mongoose-express
- * typescpipt and mongoose: https://gist.github.com/brennanMKE/ee8ea002d305d4539ef6
+ * typescript and mongoose: https://gist.github.com/brennanMKE/ee8ea002d305d4539ef6
+ * typescript and mongoose: http://www.vandiest.biz/?p=3931
 
